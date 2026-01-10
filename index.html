@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding-top: 80px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 12px;
+      padding: 16px 28px;
+      font-size: 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+    }
+    .paypal { background: #0070ba; }
+    .btc { background: #f7931a; }
+  </style>
+</head>
+<body>
+
+  <h1>Choose a payment method</h1>
+
+  <!-- PAYPAL -->
+  <a
+    class="btn paypal"
+    href="https://paypal.me/YOUR_PAYPAL_LINK"
+    target="_blank"
+    rel="noopener"
+  >
+    Pay with PayPal
+  </a>
+
+  <!-- BITCOIN -->
+  <a
+    class="btn btc"
+    href="bitcoin:YOUR_BITCOIN_ADDRESS"
+  >
+    Pay with Bitcoin
+  </a>
+
+  <p style="margin-top:40px;font-size:14px;opacity:0.7">
+    Payments are processed externally.
+  </p>
+
+</body>
+</html>
