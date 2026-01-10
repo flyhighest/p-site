@@ -12,9 +12,11 @@
       text-align: center;
       padding-top: 80px;
     }
+    .payment-block {
+      margin: 24px 0 40px;
+    }
     .btn {
       display: inline-block;
-      margin: 12px;
       padding: 16px 28px;
       font-size: 16px;
       border-radius: 8px;
@@ -23,6 +25,15 @@
     }
     .paypal { background: #0070ba; }
     .btc { background: #f7931a; }
+    .instructions {
+      margin-top: 12px;
+      font-size: 14px;
+      opacity: 0.8;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -30,26 +41,38 @@
   <h1>Choose a payment method</h1>
 
   <!-- PAYPAL -->
-  <a
-    class="btn paypal"
-    href="https://paypal.me/YOUR_PAYPAL_LINK"
-    target="_blank"
-    rel="noopener"
-  >
-    Pay with PayPal
-  </a>
+  <div class="payment-block">
+    <a
+      class="btn paypal"
+      href="https://paypal.me/YOUR_PAYPAL_LINK"
+      target="_blank"
+      rel="noopener"
+    >
+      Pay with PayPal
+    </a>
+
+    <div class="instructions">
+      <!-- Write your PayPal instructions here -->
+      <!-- Example: Complete checkout in PayPal. You will be returned automatically. -->
+    </div>
+  </div>
 
   <!-- BITCOIN -->
-  <a
-    class="btn btc"
-    href="bitcoin:YOUR_BITCOIN_ADDRESS"
-  >
-    Pay with Bitcoin
-  </a>
+  <div class="payment-block">
+    <a
+      class="btn btc"
+      href="bitcoin:YOUR_BITCOIN_ADDRESS"
+    >
+      Pay with Bitcoin
+    </a>
 
-  <p style="margin-top:40px;font-size:14px;opacity:0.7">
-    Payments are processed externally.
-  </p>
+    <div class="instructions">
+      <!-- Cash App instructions go here -->
+      Example (edit freely):<br>
+      Open Cash App → Buy Bitcoin → Send → paste the address above → confirm.
+    </div>
+  </div>
 
 </body>
 </html>
+
