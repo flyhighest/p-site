@@ -2,88 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buy Bitcoin with Card</title>
-  <meta name="description" content="Start a Bitcoin purchase using a credit/debit card through a licensed provider (MoonPay/Ramp).">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Buy Bitcoin with a credit or debit card through a licensed provider. Bitcoin is sent to the address shown below.">
   <style>
-    :root { --bg:#0b0d12; --card:#141824; --text:#e8edf5; --muted:#9aa7b8; --accent:#f2a900; --line:#233047; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 36px 18px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius: 14px; padding: 22px; }
-    h1 { margin: 0 0 8px 0; font-size: 26px; }
-    p { margin: 10px 0; color: var(--muted); line-height: 1.45; }
-    .grid { display:grid; grid-template-columns: 1fr; gap: 14px; margin-top: 16px; }
-    label { font-size: 13px; color: var(--muted); display:block; margin-bottom: 6px; }
-    input, select {
-      width:100%; box-sizing:border-box; padding: 12px 12px;
-      border-radius: 10px; border:1px solid var(--line);
-      background:#0e1220; color:var(--text);
-      outline:none;
+    :root {
+      --bg:#0b0d12;
+      --card:#141824;
+      --text:#e8edf5;
+      --muted:#9aa7b8;
+      --accent:#f2a900;
+      --line:#233047;
     }
-    .row { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 560px){ .row{ grid-template-columns:1fr; } }
-    .btns { display:flex; flex-wrap:wrap; gap: 10px; margin-top: 12px; }
+    body {
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 18px;
+    }
+    .card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 26px;
+    }
+    p {
+      margin: 10px 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .address {
+      margin-top: 16px;
+      padding: 14px;
+      background:#0e1220;
+      border:1px solid var(--line);
+      border-radius: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      word-break: break-all;
+      font-size: 14px;
+      color: var(--text);
+    }
     button {
-      border:0; border-radius: 10px; padding: 12px 14px;
-      cursor:pointer; font-weight: 600; font-size: 14px;
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: #000;
     }
-    .primary { background: var(--accent); color:#000; }
-    .secondary { background: transparent; color: var(--text); border:1px solid var(--line); }
-    .tiny { font-size: 12px; color: var(--muted); margin-top: 14px; }
-    .hr { height:1px; background:var(--line); margin: 18px 0; }
-    .pill { display:inline-block; font-size:12px; padding: 4px 8px; border:1px solid var(--line); border-radius: 999px; color: var(--muted); }
-    .error { color:#ffb4b4; font-size: 13px; margin-top: 8px; display:none; }
-    a { color: var(--text); }
+    .tiny {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <div class="card">
-      <span class="pill">Entrance page</span>
-      <h1>Buy Bitcoin with a credit/debit card</h1>
+      <h1>Buy Bitcoin with a Card</h1>
+
       <p>
-        This page redirects you to a licensed checkout provider (MoonPay or Ramp).
-        You’ll complete payment and identity verification there. Bitcoin is delivered to a wallet address you provide,
-        or a wallet can be created during checkout.
+        Click below to purchase Bitcoin using a credit or debit card through a licensed provider.
+        Payment and identity verification are completed on MoonPay.
       </p>
 
-      <div class="hr"></div>
+      <p>
+        Bitcoin purchased will be sent to the following BTC address:
+      </p>
 
-      <div class="grid">
-        <div class="row">
-          <div>
-            <label for="amount">Amount (USD)</label>
-            <input id="amount" type="number" min="20" step="1" value="100" />
-          </div>
-          <div>
-            <label for="provider">Provider</label>
-            <select id="provider">
-              <option value="moonpay">MoonPay (recommended)</option>
-              <option value="ramp">Ramp</option>
-            </select>
-          </div>
-        </div>
+      <div class="address">
+        PASTE_YOUR_BTC_ADDRESS_HERE
+      </div>
 
-        <div>
-          <label for="wallet">Bitcoin (BTC) wallet address (optional)</label>
-          <input id="wallet" type="text" placeholder="bc1... (leave blank if you don't have a wallet yet)" />
-          <div id="err" class="error">That doesn’t look like a BTC address. Leave it blank if you don’t have one.</div>
-        </div>
+      <button onclick="goToMoonPay()">
+        Continue to MoonPay
+      </button>
 
-        <div class="btns">
-          <button class="primary" onclick="startCheckout()">Continue</button>
-          <button class="secondary" onclick="useMoonPay()">Use MoonPay</button>
-          <button class="secondary" onclick="useRamp()">Use Ramp</button>
-        </div>
-
-        <div class="tiny">
-          Notes:
-          <ul>
-            <li>Card payments usually require <strong>KYC</strong> (identity verification) on the provider site.</li>
-            <li>This site does not process payments or store card information.</li>
-          </ul>
-        </div>
+      <div class="tiny">
+        <ul>
+          <li>Payments are processed by MoonPay.</li>
+          <li>Identity verification (KYC) is required.</li>
+          <li>This site does not process payments or store card data.</li>
+        </ul>
       </div>
     </div>
 
@@ -93,77 +109,16 @@
   </div>
 
   <script>
-    // Lightweight BTC address sanity check (NOT full validation).
-    function looksLikeBtcAddress(s) {
-      if (!s) return true; // allow blank
-      const v = s.trim();
-      // Common formats: bech32 (bc1...), legacy (1...), segwit compat (3...)
-      if (v.startsWith("bc1") && v.length >= 14 && v.length <= 90) return true;
-      if ((v.startsWith("1") || v.startsWith("3")) && v.length >= 26 && v.length <= 62) return true;
-      return false;
-    }
+    function goToMoonPay() {
+      const btcAddress = "PASTE_YOUR_BTC_ADDRESS_HERE";
+      const url =
+        "https://buy.moonpay.com?" +
+        "currencyCode=btc" +
+        "&walletAddress=" + encodeURIComponent(btcAddress);
 
-    function getAmount() {
-      const amount = document.getElementById("amount").value;
-      const n = Number(amount);
-      if (!Number.isFinite(n) || n <= 0) return 0;
-      return Math.round(n);
-    }
-
-    function getWallet() {
-      return document.getElementById("wallet").value.trim();
-    }
-
-    function showError(show) {
-      document.getElementById("err").style.display = show ? "block" : "none";
-    }
-
-    function useMoonPay() {
-      document.getElementById("provider").value = "moonpay";
-      startCheckout();
-    }
-
-    function useRamp() {
-      document.getElementById("provider").value = "ramp";
-      startCheckout();
-    }
-
-    function startCheckout() {
-      const provider = document.getElementById("provider").value;
-      const amount = getAmount();
-      const wallet = getWallet();
-
-      if (!looksLikeBtcAddress(wallet)) {
-        showError(true);
-        return;
-      }
-      showError(false);
-
-      if (provider === "moonpay") {
-        // MoonPay hosted checkout (simple redirect).
-        // If wallet is blank, MoonPay can prompt/create during checkout.
-        // Parameters vary by region and MoonPay configuration; this is the standard public entry pattern.
-        let url = "https://buy.moonpay.com?currencyCode=btc";
-
-        if (amount > 0) url += "&baseCurrencyAmount=" + encodeURIComponent(String(amount));
-        if (wallet) url += "&walletAddress=" + encodeURIComponent(wallet);
-
-        window.location.href = url;
-        return;
-      }
-
-      if (provider === "ramp") {
-        // Ramp hosted checkout (simple redirect).
-        // Ramp typically collects destination address in checkout if not provided.
-        let url = "https://buy.ramp.network/?asset=BTC";
-
-        if (amount > 0) url += "&fiatCurrency=USD&fiatValue=" + encodeURIComponent(String(amount));
-        if (wallet) url += "&userAddress=" + encodeURIComponent(wallet);
-
-        window.location.href = url;
-        return;
-      }
+      window.location.href = url;
     }
   </script>
 </body>
 </html>
+
